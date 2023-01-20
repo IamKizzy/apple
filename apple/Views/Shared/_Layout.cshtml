@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+
+<style>
+
+    .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 1px;
+        font-size: 10px;
+        border: none;
+        background-position :top left;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+</style>
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="~/Scripts/jQuery/jquery-3.6.0.min.js"></script>
+    <link href="~/Views/Shared/jquery.dataTables.css" rel="stylesheet" />
+    <script src="~/Views/Shared/jquery.dataTables.js"></script>
+</head>
+
+<body>
+
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        @Html.ActionLink("Stronghold", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </button>
+                    <div class="dropdown-content">
+                        <a>@Html.ActionLink("Home", "Index", "Home")</a>
+                        <a>@Html.ActionLink("About", "About", "Home")</a>
+                        <a>@Html.ActionLink("Contact", "Contact", "Home")</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        <li>@Html.ActionLink("Create", "Create", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        <li>@Html.ActionLink("Entry", "Entry", "Home")</li>
+                        @*<li>@Html.ActionLink("HistoryRecords", "History", "Home")</li>*@
+                        <li>@Html.ActionLink("Records", "Records", "Home")</li>
+                        <li>@Html.ActionLink("ViewData", "ViewData", "Home")</li>
+                        <li>@Html.ActionLink("Update", "Update", "Home")</li>
+
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/skript/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/skript/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
+</body>
+</html>

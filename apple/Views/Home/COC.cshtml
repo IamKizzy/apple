@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "COC";
+}
+
+<h2>COC</h2>
+
+<html>
+
+"ORIGINAL COPY"
+CONFIRMATION OF COVER
+NON-LAND TRANSPORTATION OPERATORS VEHICLE
+<body>
+    
+        <div id="input_row" class="input_row">
+            <table id="coctbl">
+
+                <tbody class="Content">
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>POLICY NO.</td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><input id="txtPlcy" name="txtPlcy" type="text" placeholder="POLICY NO." /></td>
+                    </tr>
+
+                    <tr>
+                        <td>NAME AND ADDRESS OF INSURED</td>
+                        <td>BUSINESS/PROFESSION</td>
+                        <td>CONFIRMATION OF COVER</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>DATE ISSUED</td>
+                        <td>OFFICIAL RECEIPT NO.</td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>PERIOD OF INSURANCE</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>FROM 12:00 NOON</td>
+                        <td>TO 12:00 NOON</td>
+                    </tr>
+                    <tr>
+                        <td>SCHEDULED VEHICLE</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>MODEL</td>
+                        <td>MAKE</td>
+                        <td>TYPE OF BODY</td>
+                        <td>COLOR</td>
+                        <td>MV FILE NO.</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input type="text" id="cocModel" name="cocModel" placeholder="MODEL NO." /></td>
+                        <td><input type="text" id="cocMake" name="cocMake" placeholder="MAKE" /></td>
+                        <td><input type="text" id="cocBody" name="cocBody" placeholder="TYPE OF BODY " /></td>
+                        <td><input type="text" id="cocColor" name="cocColor" placeholder="MODEL NO." /></td>
+                        <td><input type="text" id="cocMvNum" name="cocMvNum" placeholder="MV FILE NO." /></td>
+                    </tr>
+                    <tr>
+                        <td>PLATE NO.</td>
+                        <td>SERIAL/CHASSIS NO.</td>
+                        <td>MOTOR NO.</td>
+                        <td>AUTHORIZED CAPACITY</td>
+                        <td>UNLADEN WEIGHT</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td> MV FILE NO.</td>
+                        <td>MODEL NO.</td>
+                        <td> DATE ISSUED</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input type="text" id="mvNum" name="mvNum" placeholder="MV NO." /></td>
+                        <td><input id="txtModelNo" name="txtModelNo" type="text" placeholder="MODEL NO." /></td>
+                        <td><input type="text" name="datepicker1" id="datepicker1" value="@DateTime.Now.ToShortDateString()" /></td>
+                    </tr>
+                    <tr>
+                        <td>PLATE NO.</td>
+                        <td> MAKE</td>
+                        <td>FROM 12:00 NN</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtPlate" name="txtPlate" type="text" placeholder="PLATE NO." /> </td>
+                        <td><input id="make" name="make" type="text" placeholder="MAKE" /></td>
+                        <td><input type="text" name="datepicker2" id="datepicker2" value="@DateTime.Now.ToShortDateString()" /></td>
+                        @*<td><input id="txtSeries" name="txtSeries" type="text" placeholder="SERIES" /></td>*@
+                    </tr>
+                    <tr>
+                        <td>MOTOR NO.</td>
+                        <td>TYPE OF BODY</td>
+                        <td>TO 12:00 NN </td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtMotorNum" name="txtMotorNum" type="text" placeholder="MOTOR NO." /></td>
+                        <td><input id="txtBody" name="txtBody" type="text" placeholder="TYPE OF BODY" /></td>
+                        <td><input type="text" name="datepicker3" id="datepicker3" value="@DateTime.Now.AddYears(1).ToShortDateString()" /> </td>
+                    </tr>
+                    <tr>
+                        <td>SERIAL/CHASIS NO.</td>
+                        <td>OFFICIAL RECEIPT</td>
+                        <td>COC NO.</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtSer" name="txtSer" type="text" placeholder="SERIAL/CHASIS NO." /></td>
+                        <td><input id="txtOR" name="txtOR" type="text" placeholder="OFFICIAL RECEIPT" /></td>
+                        <td><input id="txtCoc" name="txtCoc" type="text" placeholder="COC NO." /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>POLICY NO.</td>
+                        <td>COLOR</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td></td>
+                        <td><input id="txtPol" name="txtPol" type="text" placeholder="POLICY NO." /></td>
+                        <td><input id="txtColor" name="txtColor" type="text" placeholder="COLOR" /></td>
+                    </tr>
+                    <tr>
+                        <td>PLACE </td>
+                        <td>OTHERS</td>
+                        <td>DATE</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtPlace" name="txtPlace" type="text" placeholder="PLACE OF ISSUE" /></td>
+                        <td><input id="txtOth" name="txtOth" type="text" placeholder="OTHERS" /></td>
+                        <td><input id="txtDay" name="txtDay" type="text" placeholder="DAY" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>DOCS. STAMP</td>
+                        <td>MONTHS</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td></td>
+                        <td><input id="txtDoc" name="txtDoc" type="text" placeholder="DOCS STAMP" /></td>
+                        <td><input id="txtMonth" name="txtMonth" type="text" placeholder="MONTH" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>LGT</td>
+                        <td>YEAR</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td></td>
+                        <td><input id="txtLgt" name="txtLgt" type="text" placeholder="LGT" /></td>
+                        <td><input id="txtYear" name="txtYear" type="text" placeholder="YEAR" /></td>
+                    </tr>
+                    <tr>
+                        <td>RECEIVED FROM</td>
+                        <td>PREMIUM SALES</td>
+                        <td>MISC</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtRec" name="txtRec" type="text" placeholder="RECEIVED FROM" /></td>
+                        <td><input id="txtPrem" name="txtPrem" type="text" placeholder="PREMIUM SALES" /></td>
+                        <td><input id="txtMisc" name="txtMisc" type="text" placeholder="MISC" /></td>
+                    </tr>
+                    <tr>
+                        <td>ADDRESS</td>
+                        <td>DOCS. STAMP</td>
+                        <td>TOTAL</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtAddress" name="txtAddress" type="text" placeholder="ADDRESS" /></td>
+                        <td><input id="txtDocs" name="txtDocs" type="text" placeholder="DOC STAMP" /></td>
+                        <td><input id="txtTotal" name="txtTotal" type="text" placeholder="TOTAL" /></td>
+                    </tr>
+                    <tr>
+                        <td>DATE</td>
+                        <td>LG TAX</td>
+                        <td>THE SUM OF PESOS</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input type="text" name="datepicker1" id="datepicker1" value="@DateTime.Now.ToShortDateString()" /></td>
+                        <td><input id="txtLg" name="txtLg" type="text" placeholder="LG TAX" /></td>
+                        <td><input id="txtSum" name="txtSum" type="text" placeholder="THE SUM OF PESOS" /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+</body>
+
+</html>
+

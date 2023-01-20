@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background-color: dimgray;
+    }
+
+    /*=======================
+     adding style to about-1
+    =======================*/
+
+    .about-1 {
+        margin: 30px;
+        padding: 5px;
+    }
+
+        .about-1 h1 {
+            text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        .about-1 p {
+            text-align: center;
+            padding: 3px;
+            color: #fff;
+        }
+
+    /*===========================
+     adding style to about items
+    ============================*/
+
+    .about-item {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        background-color: white;
+        padding: 80px 30px;
+        box-shadow: 0 0 9px rgba(0,0,0.6);
+    }
+
+        /*======================================
+    adding style to the icons(book,globe,pencil)
+    =========================================*/
+        .about-item i {
+            font-size: 43px;
+            margin: 0;
+        }
+
+        /*======================================
+    adding style to h3(heading 3) of each item
+    =========================================*/
+        .about-item h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        /*======================================
+    styling the hr (the blue line in between)
+    =========================================*/
+        .about-item hr {
+            width: 46px;
+            height: 3px;
+            background-color: #5fbff9;
+            margin: 0 auto;
+            border: none;
+            text-align: center;
+        }
+
+        /*========================================
+    hover means when you put your cursor over it
+    =========================================*/
+        .about-item:hover {
+            background-color: #5fbff9;
+        }
+
+            .about-item:hover i,
+            .about-item:hover h3,
+            .about-item:hover p {
+                color: #fff;
+            }
+
+            .about-item:hover hr {
+                background-color: #fff;
+            }
+
+            /*==============================================================================
+    translate Y: move along the Y axis, negative(-20) moves it up, while positive(20) moves in down by
+    ================================================================================*/
+            .about-item:hover i {
+                transform: translateY(-20px);
+            }
+
+            .about-item:hover i,
+            .about-item:hover h3,
+            .about-item:hover hr {
+                transition: all 400ms ease-in-out;
+            }
+
+    footer {
+        background: #212226;
+        padding: 20px;
+    }
+
+        footer p {
+            color: #fff;
+        }
+
+    .about-section {
+        padding: 50px;
+        text-align: center;
+        background-color: #474e5d;
+        color: white;
+    }
+</style>
+
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <!--important tags : these are important settings for your machine to know more about your code and how to display it-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--title-->
+    <title>ABOUT US</title>
+
+    <!--google fonts(the fonts that we are going to use in this tutorial: raleways and  open sans)-->
+    @*<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700&display=swap" rel="stylesheet">*@
+    <!--Link for open sans font type and its values-->
+    <link href="~/Scripts/css.css" rel="stylesheet" />
+    @*<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">*@
+    <link href="~/Scripts/css1.css" rel="stylesheet" />
+    <!--Linking fontawesome file with html-->
+    @*<link rel="stylesheet" href="css/fontawesome/css/font-awesome.min.css">*@
+    <link href="~/Scripts/font-awesome.min.css" rel="stylesheet" />
+    <!--Linking bootstrap file to html-->
+    @*<link rel="stylesheet" href="css/bootstrap/bootstrap.css">*@
+    <link href="~/Scripts/bootstrap.css" rel="stylesheet" />
+    <!--Linking the css file to html-->
+    @*<link rel="stylesheet" href="css/style/style.css">*@
+    <link href="~/Scripts/style.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    <section id="ABOUT">
+        <div class="about-section">
+            <h1> ABOUT US </h1>
+            <P> Hold on to stronghold, your wise decision comes from a bold choice, why settle for less when you can have the gold!</P>
+        </div>
+        @*<div class="about-1">
+                <h1> ABOUT US </h1>
+                <P> Hold on to stronghold, your wise decision comes from a bold choice, why settle for less when you can have the gold!</P>
+            </div>*@
+        <div id="about-2">
+            <div class="content-box-lg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="about-item text-center">
+                                <i class="fa fa-book"></i>
+                                <h3>OUR COMPANY BACKGROUND</h3>
+                                <hr>
+                                <p>
+                                    The Company had its humble beginnings when the then Mabuhay Insurance & Guaranty Co., Inc. was established on March 21, 1960 as a wholly owned Filipino non-life insurance company.
+
+                                    Mr. David C. Mercado, together with the other new shareholders, became the new owner of Mabuhay Insurance & Guaranty Co., Inc. when he acquired the firm in December 1980. Immediately thereafter, the new Management Team of Mr. Mercado changed the corporate name to what is now known as Stronghold Insurance Company, Inc. This was duly approved by the Securities and Exchange Commission on June 22, 1981.
+
+                                    The Company was able to create a name in the insurance industry as a dependable provider of various non-life insurance coverages. It was able to withstand the pecuniary effects of the huge losses brought about by natural causes that struck our country thru the settlement of legitimate claims filed with the Company.
+
+                                    In line with our Commitment of making our products and services easily available to the ever growing number of clienteles and stakeholders in various places of the country, we have put up a vast network of Regional/Branch offices strategically located in key cities of the Philippines.
+
+                                    Stronghold Insurance Company, Inc. takes pride of its accomplishment to where it is now by being a financially stable entity. Proof of this is the steady growth of its net worth over the years of its operations.
+
+                                    Stronghold Insurance’s Paid Up Capital as of December 31, 1980 was Php 4 million. This grew by leaps and bounds to about Php 700 million as of December 31, 2018 and is expected to increase to Php 1 billion by 2019.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="about-item text-center">
+                                <i class="fa fa-globe"></i>
+                                <h3>DREAMS</h3>
+                                <hr>
+                                <p>
+                                    We, at Stronghold Insurance Company, Inc., focus on becoming a leader in the Philippine insurance industry. We aspire to provide dependable risks coverage and unlimited capacities to our client through excellent and efficient personal service through highly trained and technically competent professional underwriters.
+
+                                    In partnership with other entities, specifically in the line of non-life insurance business, we set our sights on pioneering in new trends and specialty lines in the insurance industry, tapping new markets, thus establishing our foothold as a leading insurer in the Philippines and in the global markets as a whole.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="about-item text-center">
+                                <i class="fa fa-pencil"></i>
+                                <h3>COMMITMENT</h3>
+                                <hr>
+                                <p>
+                                    We, at Stronghold Insurance Company, Inc., focus on becoming a leader in the Philippine insurance industry.
+                                    We aspire to provide dependable risks coverage and unlimited capacities to our client through excellent and efficient personal service through highly trained and technically competent professional underwriters.
+
+                                    In partnership with other entities, specifically in the line of non-life insurance business, we set our sights on pioneering in new trends and specialty lines in the insurance industry, tapping new markets, thus establishing our foothold as a leading insurer in the Philippines and in the global markets as a whole.
+
+                                    We, at Stronghold Insurance Company, Inc. are committed to providing our clients with excellent service, characterized by technical expertise, personal efficient and technologically aided processes to bring about speedy and quality service guided by the highest ideals of professionalism and integrity.
+
+                                    We aspire to provide non-life insurance service to corporate clients and individual including the ordinary Filipino family to have a basic insurance protection.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

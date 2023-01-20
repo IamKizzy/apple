@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js"></script>
+
+    <title>NOTIP</title>
+</head>
+<body>
+
+        <button onclick="getpermission()">Get Permission</button>
+        <button onclick="Notify()">Send Notification</button>
+
+        <script>
+            function getpermission() {
+                Notification.requestPermission();
+            }
+
+            function Notify() {
+                Push.create("Please subscribe", {
+                    body: "Certified Professional!",
+                    icon:"girl.jpg",
+                    timeout: 9000,
+                    onClick: function () {
+                        window.open("https://www.instagram.com/ke_ji_x/");
+}
+                });
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,626 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+@using System.Web.Mvc;
+@using System.Data;
+@using System.Data.SqlClient;
+@using System.Configuration;
+@using System.Web.Configuration;
+@using System.IO;
+@using System.Drawing;
+@using System.Drawing.Imaging;
+
+@{
+    ViewBag.Title = "Records";
+}
+
+<link href="~/Scripts/skript/jquery.dataTables.min.css" rel="stylesheet" />
+
+<h2>Records</h2>
+@{
+    <style>
+
+       
+       
+
+        .info {
+            font-size: 10px;
+        }
+        .fontTabl {
+            font-size: 10px;
+        }
+
+        .content-row {
+            font-weight: bold;
+        }
+
+        .display {
+            
+            border: solid;
+            height: 1px;
+        }
+    </style>
+
+    string connDB = WebConfigurationManager.ConnectionStrings["connDB"].ConnectionString;
+
+    using (var db = new SqlConnection(connDB))
+    {
+        db.Open();
+        using (var cmd = db.CreateCommand())
+        {
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM HISTORYTBL";
+            using (var reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    <table class="display" id="example" style="margin-right:auto" margin-left:auto">
+                        <thead class="fontTabl">
+                            <tr>
+                                <th>TRANSACTION ID</th>
+                                <th>RECEIVED FROM</th>
+                                <th>TRANSACTION TYPE</th>
+                                <th>MV FILE NO.</th>
+                                <th>PLATE NO.</th>
+                                <th>DATE ISSUED</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @while (reader.Read())
+                            {
+                                <tr class="info">
+                                    <td class="transID" >@reader["Id"]</td>
+                                    <td class="receiver">@reader["RECEIVED_FROM"]</td>
+                                    <td class="trans" >@reader["TRANSTYPE"]</td>
+                                    <td class="mvNum" >@reader["MV_FILE_NO"]</td>
+                                    <td class="plateNum">@reader["PLATE_NO"]</td>
+                                    <td class="date1">@reader["DATE_ISSUE"]</td>
+
+
+                                    <td style="text-align:center">
+                                        <input type="button" value="View" class="btnView btn-info btn-sm" data-toggle="modal" data-target="#myModal">&nbsp;
+                                       
+                                        <input type="button" value="Remove" class="btnRemove btn-danger  btn-sm" data-toggle="modal" data-target="#myModal">
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                }
+            }
+        }
+    }
+}
+
+
+
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container" width="100px">
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">DETAILS RECORD</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="hop" class="hop">
+                            <div id="input_row" class="input_row">
+                                <table id="example" >
+
+                                    <tbody class="Content">
+
+                                        <select id="txttranstyp" name="txttranstyp">
+                                        <option>Select Transaction Type</option>
+                                        <option>Motorcycle</option>
+                                        <option> Tricycle</option>
+                                        <option>Private Car</option>
+                                        <option>Commercial</option>
+                                        <option>Trailer</option>
+                                        </select>         
+                                        
+                                        @*Transaction Type:     
+                                        <input type="text" id="transType" name="transType">*@
+
+                                        <tr>
+                                            <td> MV FILE NO.</td>
+                                            <td>MODEL NO.</td>
+                                            <td> DATE ISSUED</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input type="text" id="mvNum" name="mvNum" placeholder="MV NO." /></td>
+                                            <td><input id="txtModelNo" name="txtModelNo" type="text" placeholder="MODEL NO." /></td>
+                                            <td><input type="text" name="datepicker1" id="datepicker1" value="@DateTime.Now.ToShortDateString()" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PLATE NO.</td>
+                                            <td> MAKE</td>
+                                            <td>FROM 12:00 NN</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input id="txtPlate" name="txtPlate" type="text" placeholder="PLATE NO." /> </td>
+                                            <td><input id="make" name="make" type="text" placeholder="MAKE" /></td>
+                                            <td><input type="text" name="datepicker2" id="datepicker2" value="@DateTime.Now.ToShortDateString()" /></td>
+                                            @*<td><input id="txtSeries" name="txtSeries" type="text" placeholder="SERIES" /></td>*@
+                                        </tr>
+                                        <tr>
+                                            <td>MOTOR NO.</td>
+                                            <td>TYPE OF BODY</td>
+                                            <td>TO 12:00 NN </td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input id="txtMotorNum" name="txtMotorNum" type="text" placeholder="MOTOR NO." /></td>
+                                            <td><input id="txtBody" name="txtBody" type="text" placeholder="TYPE OF BODY" /></td>
+                                            <td><input type="text" name="datepicker3" id="datepicker3" value="@DateTime.Now.AddYears(1).ToShortDateString()" /> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>SERIAL/CHASIS NO.</td>
+                                            <td>OFFICIAL RECEIPT</td>
+                                            <td>COC NO.</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input id="txtSer" name="txtSer" type="text" placeholder="SERIAL/CHASIS NO." /></td>
+                                            <td><input id="txtOR" name="txtOR" type="text" placeholder="OFFICIAL RECEIPT" /></td>
+                                            <td><input id="txtCoc" name="txtCoc" type="text" placeholder="COC NO." /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>POLICY NO.</td>
+                                            <td>COLOR</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td></td>
+                                            <td><input id="txtPol" name="txtPol" type="text" placeholder="POLICY NO." /></td>
+                                            <td><input id="txtColor" name="txtColor" type="text" placeholder="COLOR" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PLACE </td>
+                                            <td>OTHERS</td>
+                                            <td>DATE</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input id="txtPlace" name="txtPlace" type="text" placeholder="PLACE OF ISSUE" /></td>
+                                            <td><input id="txtOth" name="txtOth" type="text" placeholder="OTHERS" /></td>
+                                            <td><input id="txtDay" name="txtDay" type="text" placeholder="DAY" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>DOCS. STAMP</td>
+                                            <td>MONTHS</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td></td>
+                                            <td><input id="txtDoc" name="txtDoc" type="text" placeholder="DOCS STAMP" /></td>
+                                            <td><input id="txtMonth" name="txtMonth" type="text" placeholder="MONTH" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>LGT</td>
+                                            <td>YEAR</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td></td>
+                                            <td><input id="txtLgt" name="txtLgt" type="text" placeholder="LGT" /></td>
+                                            <td><input id="txtYear" name="txtYear" type="text" placeholder="YEAR" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>RECEIVED FROM</td>
+                                            <td>PREMIUM SALES</td>
+                                            <td>MISC</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input id="txtRec" name="txtRec" type="text" placeholder="RECEIVED FROM" /></td>
+                                            <td><input id="txtPrem" name="txtPrem" type="text" placeholder="PREMIUM SALES" /></td>
+                                            <td><input id="txtMisc" name="txtMisc" type="text" placeholder="MISC" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ADDRESS</td>
+                                            <td>DOCS. STAMP</td>
+                                            <td>TOTAL</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input id="txtAddress" name="txtAddress" type="text" placeholder="ADDRESS" /></td>
+                                            <td><input id="txtDocs" name="txtDocs" type="text" placeholder="DOC STAMP" /></td>
+                                            <td><input id="txtTotal" name="txtTotal" type="text" placeholder="TOTAL" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DATE</td>
+                                            <td>LG TAX</td>
+                                            <td>THE SUM OF PESOS</td>
+                                        </tr>
+                                        <tr class="content-row">
+                                            <td><input type="text" name="datepicker1" id="datepicker1" value="@DateTime.Now.ToShortDateString()" /></td>
+                                            <td><input id="txtLg" name="txtLg" type="text" placeholder="LG TAX" /></td>
+                                            <td><input id="txtSum" name="txtSum" type="text" placeholder="THE SUM OF PESOS" /></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btnEdit btn-default" data-toggle="modal">Edit</button>
+                        <button onclick="window.print();" class="TransID" id="btnPrint">PRINT</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+
+
+<script src="~/Scripts/jQuery/jquery-3.6.0.min.js"></script>
+
+@*<script>
+    $(".btnPrint").each(function () {
+        mywindow.document.write("#container");
+    }
+    
+
+</script>*@
+
+<script>
+    $("document").ready(function () {
+        $(".btnRemove").each(function () {      //REMOVE DETAILS IN RECORD
+            $(this).click(function () {
+
+
+
+                var id = $(this).closest('.info').find('.transID').html();
+
+
+                $.post("../Home/removeData", {
+
+                    transID: id
+                }, function (res) {
+                    if (res[0].mess != 1) {
+                        alert("Removed Successfully!");
+                        window.location.href = "../Home/Records";
+                    }
+                    else {
+                        alert("Error!");
+                    }
+                });
+            });
+        });
+
+    });
+
+
+</script>
+
+
+<script>
+    $("document").ready(function () {
+        $(".btnView").each(function () {        //VIEW DETAILS
+            $(this).click(function () {
+
+                
+                $("#txttranstyp").attr("disabled", "disabled");
+                $("#mvNum").attr("disabled", "disabled");
+                $("#make").attr("disabled", "disabled");
+                $("#datepicker1").attr("disabled", "disabled");
+
+                $("#txtPlate").attr("disabled", "disabled");
+                $("#txtSeries").attr("disabled", "disabled");
+                $("#datepicker2").attr("disabled", "disabled");
+
+                $("#txtMotorNum").attr("disabled", "disabled");
+                $("#txtBody").attr("disabled", "disabled");
+                $("#datepicker3").attr("disabled", "disabled");
+
+                $("#txtSer").attr("disabled", "disabled");
+                $("#txtModelNo").attr("disabled", "disabled");
+                $("#txtColor").attr("disabled", "disabled");
+
+                $("#txtOR").attr("disabled", "disabled");
+                $("#txtOth").attr("disabled", "disabled");
+                $("#txtDay").attr("disabled", "disabled");
+
+                $("#txtCoc").attr("disabled", "disabled");
+                $("#txtDoc").attr("disabled", "disabled");
+                $("#txtMonth").attr("disabled", "disabled");
+
+                $("#txtPol").attr("disabled", "disabled");
+                $("#txtLgt").attr("disabled", "disabled");
+                $("#txtYear").attr("disabled", "disabled");
+
+                $("#txtRec").attr("disabled", "disabled");
+                $("#txtPrem").attr("disabled", "disabled");
+                $("#txtMisc").attr("disabled", "disabled");
+
+                $("#txtAddress").attr("disabled", "disabled");
+                $("#txtDocs").attr("disabled", "disabled");
+                $("#txtTotal").attr("disabled", "disabled");
+
+                $("#txtPlace").attr("disabled", "disabled");
+                $("#txtLg").attr("disabled", "disabled");
+                $("#txtSum").attr("disabled", "disabled");
+
+
+                var id = $(this).closest('.info').find('.transID').html();
+
+
+                $.post("../Home/SearchItem", {
+
+                    transID: id
+                }, function (res) {
+                    if (res[0].mess != 1) {
+
+                        $("#txttranstyp").val(res[0].type);
+                        $("#mvNum").val(res[0].mvNum);
+                        $("#make").val(res[0].brand);
+                        $("#datepicker1").val(res[0].issued);
+
+                        $("#txtPlate").val(res[0].plate);
+                        $("#txtSeries").val(res[0].series);
+                        $("#datepicker2").val(res[0].dateFrom);
+
+                        $("#txtMotorNum").val(res[0].motorNum);
+                        $("#txtBody").val(res[0].body);
+                        $("#datepicker3").val(res[0].dateTo);
+
+                        $("#txtSer").val(res[0].srl);
+                        $("#txtModelNo").val(res[0].modelNum);
+                        $("#txtColor").val(res[0].color);
+
+                        $("#txtOR").val(res[0].off_Rcpt);
+                        $("#txtOth").val(res[0].othr);
+                        $("#txtDay").val(res[0].day);
+
+                        $("#txtCoc").val(res[0].cocNum);
+                        $("#txtDoc").val(res[0].docs1);
+                        $("#txtMonth").val(res[0].mnth);
+
+                        $("#txtPol").val(res[0].polcyNum);
+                        $("#txtLgt").val(res[0].lgt);
+                        $("#txtYear").val(res[0].year);
+
+                        $("#txtRec").val(res[0].receiveFrom);
+                        $("#txtPrem").val(res[0].premiumSales);
+                        $("#txtMisc").val(res[0].msc);
+
+                        $("#txtAddress").val(res[0].address);
+                        $("#txtDocs").val(res[0].docs2);
+                        $("#txtTotal").val(res[0].total);
+
+                        $("#txtPlace").val(res[0].place);
+                        $("#txtLg").val(res[0].lg);
+                        $("#txtSum").val(res[0].sum);
+
+
+                    }
+
+                });
+            });
+        });
+
+    });
+
+
+</script>
+
+
+<script>
+    $("document").ready(function () {
+         $(".btnEdit").each(function () {       //UPDATE DETAILS RECORD
+             $(this).click(function () {
+
+
+                 $("#txttranstyp").attr("disabled", true);
+                 $("#mvNum").attr("disabled", true);
+                 $("#make").attr("disabled", true);
+                 $("#datepicker1").attr("disabled", true);
+
+                 $("#txtPlate").attr("disabled", true);
+                 $("#txtSeries").attr("disabled", true);
+                 $("#datepicker2").attr("disabled", true);
+
+                 $("#txtMotorNum").attr("disabled", true);
+                 $("#txtBody").attr("disabled", true);
+                 $("#datepicker3").attr("disabled", true);
+
+                 $("#txtSer").attr("disabled", true);
+                 $("#txtModelNo").attr("disabled", true);
+                 $("#txtColor").attr("disabled", true);
+
+                 $("#txtOR").attr("disabled", true);
+                 $("#txtOth").attr("disabled", true);
+                 $("#txtDay").attr("disabled", true);
+
+                 $("#txtCoc").attr("disabled", true);
+                 $("#txtDoc").attr("disabled", true);
+                 $("#txtMonth").attr("disabled", true);
+
+                 $("#txtPol").attr("disabled", true);
+                 $("#txtLgt").attr("disabled", true);
+                 $("#txtYear").attr("disabled", true);
+
+                 $("#txtRec").attr("disabled", true);
+                 $("#txtPrem").attr("disabled", true);
+                 $("#txtMisc").attr("disabled", true);
+
+                 $("#txtAddress").attr("disabled", true);
+                 $("#txtDocs").attr("disabled", true);
+                 $("#txtTotal").attr("disabled", true);
+
+                 $("#txtPlace").attr("disabled", true);
+                 $("#txtLg").attr("disabled", true);
+                 $("#txtSum").attr("disabled", true);
+
+               // ----------------------------------------------------------------------
+
+                 $("#txttranstyp").removeAttr("disabled").val();
+
+                 $("#mvNum").removeAttr("disabled").val();
+                 $("#make").removeAttr("disabled").val();
+                 $("#datepicker1").removeAttr("disabled").val();
+
+                 $("#txtPlate").removeAttr("disabled").val();
+                 $("#txtSeries").removeAttr("disabled").val();
+                 $("#datepicker2").removeAttr("disabled").val();
+
+                 $("#txtMotorNum").removeAttr("disabled").val();
+                 $("#txtBody").removeAttr("disabled").val();
+                 $("#datepicker3").removeAttr("disabled").val();
+
+                 $("#txtSer").removeAttr("disabled").val();
+                 $("#txtModelNo").removeAttr("disabled").val();
+                 $("#txtColor").removeAttr("disabled").val();
+
+                 $("#txtOR").removeAttr("disabled").val();
+                 $("#txtOth").removeAttr("disabled").val();
+                 $("#txtDay").removeAttr("disabled").val();
+
+                 $("#txtCoc").removeAttr("disabled").val();
+                 $("#txtDoc").removeAttr("disabled").val();
+                 $("#txtMonth").removeAttr("disabled").val();
+
+                 $("#txtPol").removeAttr("disabled").val();
+                 $("#txtLgt").removeAttr("disabled").val();
+                 $("#txtYear").removeAttr("disabled").val();
+
+                 $("#txtRec").removeAttr("disabled").val();
+                 $("#txtPrem").removeAttr("disabled").val();
+                 $("#txtMisc").removeAttr("disabled").val();
+
+                 $("#txtAddress").removeAttr("disabled").val();
+                 $("#txtDocs").removeAttr("disabled").val();
+                 $("#txtTotal").removeAttr("disabled").val();
+
+                 $("#txtPlace").removeAttr("disabled").val();
+                 $("#txtLg").removeAttr("disabled").val();
+                 $("#txtSum").removeAttr("disabled").val();
+
+                    var id = $(this).closest('.info').find('.transID').html();
+
+
+                    $.post("../Home/UpdateItem", {
+
+                        transID: id,
+
+                        transType: transType,
+                        mvNum: mvNum,
+                        make: make,
+                        datepicker1: datepicker1,
+
+                        txtPlate: txtPlate,
+                        txtSeries: txtSeries,
+                        datepicker2: datepicker2,
+
+                        txtMotorNum: txtMotorNum,
+                        txtBody: txtBody,
+                        datepicker3: datepicker3,
+
+                        txtSer: txtSer,
+                        txtModelNo: txtModelNo,
+                        txtColor: txtColor,
+
+                        txtOR: txtOR,
+                        txtOth: txtOth,
+                        txtDay: txtDay,
+
+                        txtCoc: txtCoc,
+                        txtDoc: txtDoc,
+                        txtMonth: txtMonth,
+
+                        txtPol: txtPol,
+                        txtLgt: txtLgt,
+                        txtYear: txtYear,
+
+                        txtRec: txtRec,
+                        txtPrem: txtPrem,
+                        txtMisc: txtMisc,
+
+                        txtAddress: txtAddress,
+                        txtDocs: txtDocs,
+                        txtTotal: txtTotal,
+
+                        txtPlace: txtPlace,
+                        txtLg: txtLg,
+                        txtSum: txtSum
+
+                    }, function (res) {
+                        if (res[0].mess != 1) {
+
+                            $("#txttranstyp").val(res[0].type);
+                            $("#mvNum").val(res[0].mvNum);
+                            $("#make").val(res[0].brand);
+                            $("#datepicker1").val(res[0].issued);
+
+                            $("#txtPlate").val(res[0].plate);
+                            $("#txtSeries").val(res[0].series);
+                            $("#datepicker2").val(res[0].dateFrom);
+
+                            $("#txtMotorNum").val(res[0].motorNum);
+                            $("#txtBody").val(res[0].body);
+                            $("#datepicker3").val(res[0].dateTo);
+
+                            $("#txtSer").val(res[0].srl);
+                            $("#txtModelNo").val(res[0].modelNum);
+                            $("#txtColor").val(res[0].color);
+
+                            $("#txtOR").val(res[0].off_Rcpt);
+                            $("#txtOth").val(res[0].othr);
+                            $("#txtDay").val(res[0].day);
+
+                            $("#txtCoc").val(res[0].cocNum);
+                            $("#txtDoc").val(res[0].docs1);
+                            $("#txtMonth").val(res[0].mnth);
+
+                            $("#txtPol").val(res[0].polcyNum);
+                            $("#txtLgt").val(res[0].lgt);
+                            $("#txtYear").val(res[0].year);
+
+                            $("#txtRec").val(res[0].receiveFrom);
+                            $("#txtPrem").val(res[0].premiumSales);
+                            $("#txtMisc").val(res[0].msc);
+
+                            $("#txtAddress").val(res[0].address);
+                            $("#txtDocs").val(res[0].docs2);
+                            $("#txtTotal").val(res[0].total);
+
+                            $("#txtPlace").val(res[0].place);
+                            $("#txtLg").val(res[0].lg);
+                            $("#txtSum").val(res[0].sum);
+
+
+                    }
+
+             });
+        });
+    });                 
+
+    });
+
+</script>
+

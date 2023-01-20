@@ -1,0 +1,294 @@
+﻿
+@{
+    ViewBag.Title = "ViewData";
+}
+
+<h2>VIEWDATA</h2>
+
+<script src="~/Scripts/jQuery/jquery-3.6.0.min.js"></script>
+
+@*<script src="~/Scripts/btn/View.js"></script>*@
+<script>
+    $().ready(function () {
+
+        
+        
+        $("#mvNum").attr("disabled", "disabled");
+        $("#make").attr("disabled", "disabled");
+        $("#datepicker1").attr("disabled", "disabled");
+
+        $("#txtPlate").attr("disabled", "disabled");
+        $("#txtSeries").attr("disabled", "disabled");
+        $("#datepicker2").attr("disabled", "disabled");
+
+        $("#txtMotorNum").attr("disabled", "disabled");
+        $("#txtBody").attr("disabled", "disabled");
+        $("#datepicker3").attr("disabled", "disabled");
+
+        $("#txtSer").attr("disabled", "disabled");
+        $("#txtModelNo").attr("disabled", "disabled");
+        $("#txtColor").attr("disabled", "disabled");
+
+        $("#txtOR").attr("disabled", "disabled");
+        $("#txtOth").attr("disabled", "disabled");
+        $("#txtDay").attr("disabled", "disabled");
+
+        $("#txtCoc").attr("disabled", "disabled");
+        $("#txtDoc").attr("disabled", "disabled");
+        $("#txtMonth").attr("disabled", "disabled");
+
+        $("#txtPol").attr("disabled", "disabled");
+        $("#txtLgt").attr("disabled", "disabled");
+        $("#txtYear").attr("disabled", "disabled");
+
+        $("#txtRec").attr("disabled", "disabled");
+        $("#txtPrem").attr("disabled", "disabled");
+        $("#txtMisc").attr("disabled", "disabled");
+
+        $("#txtAddress").attr("disabled", "disabled");
+        $("#txtDocs").attr("disabled", "disabled");
+        $("#txtTotal").attr("disabled", "disabled");
+
+        $("#txtPlace").attr("disabled", "disabled");
+        $("#txtLg").attr("disabled", "disabled");
+        $("#txtSum").attr("disabled", "disabled");
+
+
+
+        
+        $("#mvNum").hide();
+        $("#make").hide();
+        $("#datepicker1").hide();
+        $("#txtPlate").hide();
+        $("#txtSeries").hide();
+        $("#datepicker2").hide();
+
+        $("#txtMotorNum").hide();
+        $("#txtBody").hide();
+        $("#datepicker3").hide();
+
+        $("#txtSer").hide();
+        $("#txtModelNo").hide();
+        $("#txtColor").hide();
+
+        $("#txtOR").hide();
+        $("#txtOth").hide();
+        $("#txtDay").hide();
+
+        $("#txtCoc").hide();
+        $("#txtDoc").hide();
+        $("#txtMonth").hide();
+
+        $("#txtPol").hide();
+        $("#txtLgt").hide();
+        $("#txtYear").hide();
+
+        $("#txtRec").hide();
+        $("#txtPrem").hide();
+        $("#txtMisc").hide();
+
+        $("#txtAddress").hide();
+        $("#txtDocs").hide();
+        $("#txtTotal").hide();
+
+        $("#txtPlace").hide();
+        $("#txtLg").hide();
+        $("#txtSum").hide();
+
+
+        $("#btnSearch").click(function () {
+
+            
+            var mv = $("#mvNumSearch").val();
+            alert(mv);
+            $.post("../Home/SearchItem", {
+                mvNum: mv
+            }, function (res) {
+
+
+
+
+                if (res[0].mess != 1) {
+                    
+
+                    $("#mvNum").val(res[0].mvNum);
+                    $("#make").val(res[0].brand);
+                    $("#datepicker1").val(res[0].issued);
+
+                    $("#txtPlate").val(res[0].plate);
+                    $("#txtSeries").val(res[0].series);
+                    $("#datepicker2").val(res[0].dateFrom);
+
+                    $("#txtMotorNum").val(res[0].motorNum);
+                    $("#txtBody").val(res[0].body);
+                    $("#datepicker3").val(res[0].dateTo);
+
+                    $("#txtSer").val(res[0].srl);
+                    $("#txtModelNo").val(res[0].modelNum);
+                    $("#txtColor").val(res[0].color);
+
+                    $("#txtOR").val(res[0].off_Rcpt);
+                    $("#txtOth").val(res[0].othr);
+                    $("#txtDay").val(res[0].day);
+
+                    $("#txtCoc").val(res[0].cocNum);
+                    $("#txtDoc").val(res[0].docs1);
+                    $("#txtMonth").val(res[0].mnth);
+
+                    $("#txtPol").val(res[0].polcyNum);
+                    $("#txtLgt").val(res[0].lgt);
+                    $("#txtYear").val(res[0].year);
+
+                    $("#txtRec").val(res[0].receiveFrom);
+                    $("#txtPrem").val(res[0].premiumSales);
+                    $("#txtMisc").val(res[0].msc);
+
+                    $("#txtAddress").val(res[0].address);
+                    $("#txtDocs").val(res[0].docs2);
+                    $("#txtTotal").val(res[0].total);
+
+                    $("#txtPlace").val(res[0].place);
+                    $("#txtLg").val(res[0].lg);
+                    $("#txtSum").val(res[0].sum);
+
+
+                    $("#mvNum").show();
+                    $("#make").show();
+                    $("#datepicker1").show();
+                    $("#txtPlate").show();
+                    $("#txtSeries").show();
+                    $("#datepicker2").show();
+
+                    $("#txtMotorNum").show();
+                    $("#txtBody").show();
+                    $("#datepicker3").show();
+
+                    $("#txtSer").show();
+                    $("#txtModelNo").show();
+                    $("#txtColor").show();
+
+                    $("#txtOR").show();
+                    $("#txtOth").show();
+                    $("#txtDay").show();
+
+                    $("#txtCoc").show();
+                    $("#txtDoc").show();
+                    $("#txtMonth").show();
+
+                    $("#txtPol").show();
+                    $("#txtLgt").show();
+                    $("#txtYear").show();
+
+                    $("#txtRec").show();
+                    $("#txtPrem").show();
+                    $("#txtMisc").show();
+
+                    $("#txtAddress").show();
+                    $("#txtDocs").show();
+                    $("#txtTotal").show();
+
+                    $("#txtPlace").show();
+                    $("#txtLg").show();
+                    $("#txtSum").show();
+
+                }
+                else {
+                    alert('error!');
+                }
+
+            });
+
+        });
+    });
+</script>
+
+
+<html>
+<body>
+
+
+    <input type="text" id="mvNumSearch" name="mvNum" required />
+
+    <input type="button" id="btnSearch" name="btnSearch" value="Search" />
+    <br />
+    <br />
+
+    <div id="view" class="view">
+
+
+        <div>
+            <input type="text" id="mvNum" name="mvNum" placeholder="MV NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="make" name="make" type="text" placeholder="MAKE" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="datepicker1" id="datepicker1" value="@DateTime.Now.ToShortDateString()" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+        <div>
+            <input id="txtPlate" name="txtPlate" type="text" placeholder="PLATE NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtSeries" name="txtSeries" type="text" placeholder="SERIES" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="datepicker2" id="datepicker2" value="@DateTime.Now.ToShortDateString()" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+
+        </div>
+
+        <div>
+            <input id="txtMotorNum" name="txtMotorNum" type="text" placeholder="MOTOR NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtBody" name="txtBody" type="text" placeholder="TYPE OF BODY" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="datepicker3" id="datepicker3" value="@DateTime.Now.AddYears(1).ToShortDateString()" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+        <div>
+            <input id="txtSer" name="txtSer" type="text" placeholder="SERIAL/CHASIS NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtModelNo" name="txtModelNo" type="text" placeholder="MODEL NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtColor" name="txtColor" type="text" placeholder="COLOR" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+        <div>
+            <input id="txtOR" name="txtOR" type="text" placeholder="OFFICIAL RECEIPT" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtOth" name="txtOth" type="text" placeholder="OTHERS" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtDay" name="txtDay" type="text" placeholder="DAY" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+        <div>
+            <input id="txtCoc" name="txtCoc" type="text" placeholder="COC NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtDoc" name="txtDoc" type="text" placeholder="DOCS STAMP" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtMonth" name="txtMonth" type="text" placeholder="MONTH" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+        <div>
+            <input id="txtPol" name="txtPol" type="text" placeholder="POLICY NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtLgt" name="txtLgt" type="text" placeholder="LGT" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtYear" name="txtYear" type="text" placeholder="YEAR" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+        <div>
+            <input id="txtRec" name="txtRec" type="text" placeholder="RECEIVED FROM" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtPrem" name="txtPrem" type="text" placeholder="PREMIUM SALES" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtMisc" name="txtMisc" type="text" placeholder="MISC" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+        <div>
+            <input id="txtAddress" name="txtAddress" type="text" placeholder="ADDRESS" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtDocs" name="txtDocs" type="text" placeholder="DOC STAMP" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtTotal" name="txtTotal" type="text" placeholder="TOTAL" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+        <div>
+            <input id="txtPlace" name="txtPlace" type="text" placeholder="PLACE OF ISSUE" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtLg" name="txtLg" type="text" placeholder="LG TAX" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtSum" name="txtSum" type="text" placeholder="THE SUM OF PESOS" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

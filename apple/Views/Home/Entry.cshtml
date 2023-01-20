@@ -1,0 +1,364 @@
+﻿
+@{
+    ViewBag.Title = "Entry";
+}
+<br />
+<br />
+<br />
+
+<style>
+    body {
+        font-family: Arial;
+        font-size: 16px;
+        margin: 0;
+        background: Khaki;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .entrytable {
+        width: 100%;
+        background-color: cadetblue;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(0,0,0.3);
+        border: 10px solid #C19A6B;
+        color: #000;
+        padding: 32px 100px;
+        text-align: center;
+    }
+
+    .hj {
+        font-size: 40px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-align: center;
+        color: crimson;
+        font-weight: bold;
+    }
+
+    .option {
+        text-align: left;
+    }
+
+    .btn {
+        padding: 10px 30px;
+        font-size: 25px;
+        line-height: 30px;
+        height: 50px;
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+        color: #2793d2;
+        border: none;
+        transition: all 0.3s ease-out;
+        border-radius: 5px;
+    }
+
+    .entrytable .btn input[type="submit"] {
+        background-color: black;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .btn input[type="submit"]:hover {
+        background-color: black;
+    }
+
+    .btn btn-primary {
+        font-weight: 100;
+    }
+</style>
+
+<html>
+<body>
+    <form id="entry" action="../Home/Entry" method="post" enctype="multipart/form-data"></form>
+    <div class="entrytable">
+        <div class="option">
+            <p class="hj"> Details Entry </p>
+            <select id="txttranstyp">
+                <option>Select Transaction Type</option>
+                <option>Motorcycle</option>
+                <option> Tricycle</option>
+                <option>Private Car</option>
+                <option>Commercial</option>
+                <option>Trailer</option>
+            </select>
+        </div>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <label>DATE ISSUED:</label>
+
+        <div>
+            <input id="txtMv" type="text" placeholder="MV FILE NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="make" type="text" placeholder="MAKE" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="datepicker1" name="datepicker" value="@DateTime.Now.ToShortDateString()" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+
+        </div>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <label>FROM 12:00 NN:</label>
+        <div>
+            <input id="txtPlate" type="text" placeholder="PLATE NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtSeries" type="text" placeholder="SERIES" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="datepicker2" name="datepicker" value="@DateTime.Now.ToShortDateString()" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+
+        </div>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <label>TO 12:00 NN:</label>
+        <div>
+            <input id="txtMotorNum" type="text" placeholder="MOTOR NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtBody" type="text" placeholder="TYPE OF BODY" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="datepicker3" name="datepicker" value="@DateTime.Now.AddYears(1).ToShortDateString()" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+        <div>
+            <input id="txtSer" type="text" placeholder="SERIAL/CHASIS NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtModelNo" type="text" placeholder="MODEL NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtColor" type="text" placeholder="COLOR" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+
+        <br />
+
+
+        <div>
+            <input id="txtOR" type="text" placeholder="OFFICIAL RECEIPT" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtOth" type="text" placeholder="OTHERS" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtDay" type="text" placeholder="DAY" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+        <div>
+            <input id="txtCoc" type="text" placeholder="COC NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtDoc1" type="text" placeholder="DOCS STAMP" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtMonth" type="text" placeholder="MONTH" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+        <div>
+            <input id="txtPol" type="text" placeholder="POLICY NO." />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtLgt" type="text" placeholder="LGT" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtYear" type="text" placeholder="YEAR" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+        <br />
+
+        <div>
+            <input id="txtRec" type="text" placeholder="RECEIVED FROM" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtPrem" type="text" placeholder="PREMIUM SALES" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtMisc" type="text" placeholder="MISC" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+        <div>
+            <input id="txtAddress" type="text" placeholder="ADDRESS" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtDoc2" type="text" placeholder="DOC STAMP" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtTotal" type="text" placeholder="TOTAL" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+        <div>
+            <input id="txtPlace" type="text" placeholder="PLACE OF ISSUE" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtLgtax" type="text" placeholder="LG TAX" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtSum" type="text" placeholder="THE SUM OF PESOS" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+        </div>
+
+        <button type="button" class="btn btn-primary" id="btnEntry">SUBMIT</button>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    $('#btnEntry').click(function () {
+        var txtMv = $('#txtMv').val();  //MV File No.
+        var txtPlate = $('#txtPlate').val();    //Plate No.
+        var txtMotorNum = $('#txtMotorNum').val();  //Motor No.
+        var txtSer = $('#txtSer').val(); //Serial No.
+        var txtOR = $('#txtOR').val();  //Official Receipt
+        var txtCoc = $('#txtCoc').val();    //COC No.
+        var txtPol = $('#txtPol').val();    //Policy No.
+        var txtRec = $('#txtRec').val();    //Received From
+        var txtAddress = $('#txtAddress').val();
+        var txtPlace = $('#txtPlace').val();    //Place Issue
+        var make = $('#make').val();
+        var txtSeries = $('#txtSeries').val();
+        var txtBody = $('#txtBody').val();  //Type of Body
+        var txtModelNo = $('#txtModelNo').val();
+        var txtOth = $('#txtOth').val();
+        var txtDoc1 = $('#txtDoc1').val();  //Docs stamp1
+        var txtLgt = $('#txtLgt').val();
+        var txtPrem = $('#txtPrem').val();  //Premium Sales
+        var txtDoc2 = $('#txtDoc2').val();  //Doc stamp2
+        var txtLgtax = $('#txtLgtax').val();
+        var datepicker1 = $('#datepicker1').val(); //date issue
+        var datepicker2 = $('#datepicker2').val(); //from
+        var datepicker3 = $('#datepicker3').val(); //to
+        var txtColor = $('#txtColor').val();
+        var txtDay = $('#txtDay').val();
+        var txtMonth = $('#txtMonth').val();
+        var txtYear = $('#txtYear').val();
+        var txtMisc = $('#txtMisc').val();
+        var txtTotal = $('#txtTotal').val();
+        var txtSum = $('#txtSum').val();    //Sum of pesos
+        var txttranstyp = $('#txttranstyp').val();  //Transaction Type
+
+
+        if (txtMv == "" || txtMv == null) {
+            alert("MV FILE No. required");
+            return false;
+        }
+        if (txtPlate == "" || txtPlate == null) {
+            alert("PLATE No. required");
+            return false;
+        }
+        if (txtMotorNum == "" || txtMotorNum == null) {
+            alert("MOTOR No. required");
+            return false;
+        }
+        if (txtSer == "" || txtSer == null) {
+            alert("Serial No. required");
+            return false;
+        }
+        if (txtOR == "" || txtOR == null) {
+            alert("Official Receipt required");
+            return false;
+        }
+        if (txtCoc == "" || txtCoc == null) {
+            alert(" COC required");
+            return false;
+        }
+        if (txtPol == "" || txtPol == null) {
+            alert("Policy No. required");
+            return false;
+        }
+        if (txtRec == "" || txtRec == null) {
+            alert("RECEIVED FROM required");
+            return false;
+        }
+        if (txtAddress == "" || txtAddress == null) {
+            alert("Address required");
+            return false;
+        }
+        if (txtPlace == "" || txtPlace == null) {
+            alert("Place Issue required");
+            return false;
+        }
+        if (make == "" || make == null) {
+            alert("MAKE required");
+            return false;
+        }
+        if (txtSeries == "" || txtSeries == null) {
+            alert("SERIES required");
+            return false;
+        }
+        if (txtBody == "" || txtBody == null) {
+            alert("TYPE of Body required");
+            return false;
+        }
+        if (txtModelNo == "" || txtModelNo == null) {
+            alert("Model No. required");
+            return false;
+        }
+        if (txtOth == "" || txtOth == null) {
+            alert("Other required");
+            return false;
+        }
+        if (txtDoc1 == "" || txtDoc1 == null) {
+            alert("Docs Stamp required");
+            return false;
+        }
+        if (txtLgt == "" || txtLgt == null) {
+            alert("LGT required");
+            return false;
+        }
+        if (txtPrem == "" || txtPrem == null) {
+            alert("Premium Sales required");
+            return false;
+        }
+        if (txtDoc2 == "" || txtDoc2 == null) {
+            alert("Docs Stamp required");
+            return false;
+        }
+        if (txtLgtax == "" || txtLgtax == null) {
+            alert("Lgtax required");
+            return false;
+        }
+        if (datepicker1 == "" || datepicker1 == null) {
+            alert("Date Issue required");
+            return false;
+        }
+        if (datepicker2 == "" || datepicker2 == null) {
+            alert("Date FROM required");
+            return false;
+        }
+        if (datepicker3 == "" || datepicker3 == null) {
+            alert("Date TO required");
+            return false;
+        }
+        if (txtColor == "" || txtColor == null) {
+            alert("Color required");
+            return false;
+        }
+        if (txtDay == "" || txtDay == null) {
+            alert("Day required");
+            return false;
+        }
+        if (txtMonth == "" || txtMonth == null) {
+            alert("Month required");
+            return false;
+        }
+        if (txtYear == "" || txtYear == null) {
+            alert("Year required");
+            return false;
+        }
+        if (txtMisc == "" || txtMisc == null) {
+            alert("MISC required");
+            return false;
+        }
+        if (txtTotal == "" || txtTotal == null) {
+            alert("TOTAL required");
+            return false;
+        }
+        if (txtSum == "" || txtSum == null) {
+            alert("Sum of Pesos required");
+            return false;
+        }
+        if (txttranstyp == "" || txttranstyp == null || txttranstyp == "Select Transaction Type") {
+            alert("TRANSACTION TYPE required");
+            return false;
+        }
+
+
+        //ajax
+        $.post("../Home/DetailsEntry", { mvfl: txtMv, pltno: txtPlate, mtrno: txtMotorNum, srlno: txtSer, ofclrcpt: txtOR, cocno: txtCoc, plcyno: txtPol, rcvdfrm: txtRec, address: txtAddress, plcissue: txtPlace, make: make, series: txtSeries, bodytyp: txtBody, mdlno: txtModelNo, othrs: txtOth, stamp1: txtDoc1, lgt: txtLgt, premsls: txtPrem, stamp2: txtDoc2, lgtax: txtLgtax, dtissue: datepicker1, frm: datepicker2, to: datepicker3, clr: txtColor, day: txtDay, mnths: txtMonth, year: txtYear, misc: txtMisc, total: txtTotal, sumpesos: txtSum, transtype: txttranstyp }, function (res) {
+            if (res[0].mess != 1) {
+                window.location.href = "../Home/Records";
+                alert('Submitted Successfully!');
+            }
+            else {
+                alert('Invalid Credentials!');
+            }
+        });
+
+    });
+
+</script>

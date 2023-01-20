@@ -1,0 +1,352 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<html>
+<body>
+    @*<div style="height:720px;">
+            <div style="float: left; width: 2%; padding: 10px; height: 700px; background-color: cadetblue;">
+            </div>
+            <div style="float: left;width: 35%;padding: 10px;height: 698px;background-color: #f2f2f2;border: 1px solid lightgrey;">
+                <h2>UpdateProduct</h2>
+
+                Product Number / Code<br />
+                <input type="text" id="itmcde" name="itmcde" required />&nbsp;&nbsp;
+                <input type="button" id="btnSearch" name="btnSearch" value="Search" />
+                <br />
+                Product  Description <br />
+                <input type="text" id="itmdesc" name="itmdesc" required /><br /><br />
+                Product  Price <br />
+                <input type="text" id="itmprice" name="itmprice" required /><br /><br />
+                <input type="button" id="btnEdit" name="btnEdit" value="Edit" />
+                <input type="button" id="btnUpdate" name="btnUpdate" value="Update" />
+
+            </div>
+            <div style="float: left; width: 55%; padding: 10px; height: 700px; background-color: cadetblue;">
+            </div>
+
+        </div>
+
+
+        <script type="text/javascript" src="~/Scripts/MyScripts/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script src="~/Scripts/MyScripts/UpdateItem.js"></script>
+        <script type="text/javascript" src="~/Scripts/MyScripts/myScript.js?data=@DateTime.Now.ToString("mmss")"></script>*@
+
+    <div id="hop" class="hop">
+        <div id="input_row" class="input_row">
+            <table id="example">
+
+                <tbody class="Content">
+
+                    @*<select id="txttranstyp">
+        <option>Select Transaction Type</option>
+        <option>Motorcycle</option>
+        <option> Tricycle</option>
+        <option>Private Car</option>
+        <option>Commercial</option>
+        <option>Trailer</option>
+         </select>*@
+                    Transaction Type:
+                    <input type="text" id="transType" name="transType">
+                    <select>
+                        <option>Motorcycle</option>
+                        <option> Tricycle</option>
+                        <option>Private Car</option>
+                        <option>Commercial</option>
+                        <option>Trailer</option>
+                    </select>
+
+                    <tr>
+                        <td> MV FILE NO.</td>
+                        <td>MODEL NO.</td>
+                        <td> DATE ISSUED</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input type="text" id="mvNum" name="mvNum" placeholder="MV NO." /></td>
+                        <td><input id="txtModelNo" name="txtModelNo" type="text" placeholder="MODEL NO." /></td>
+                        <td><input type="text" name="datepicker1" id="datepicker1" value="@DateTime.Now.ToShortDateString()" /></td>
+                    </tr>
+                    <tr>
+                        <td>PLATE NO.</td>
+                        <td> MAKE</td>
+                        <td>FROM 12:00 NN</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtPlate" name="txtPlate" type="text" placeholder="PLATE NO." /> </td>
+                        <td><input id="make" name="make" type="text" placeholder="MAKE" /></td>
+                        <td><input type="text" name="datepicker2" id="datepicker2" value="@DateTime.Now.ToShortDateString()" /></td>
+                    </tr>
+                    <tr>
+                        <td>MOTOR NO.</td>
+                        <td>TYPE OF BODY</td>
+                        <td>TO 12:00 NN </td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtMotorNum" name="txtMotorNum" type="text" placeholder="MOTOR NO." /></td>
+                        <td><input id="txtBody" name="txtBody" type="text" placeholder="TYPE OF BODY" /></td>
+                        <td><input type="text" name="datepicker3" id="datepicker3" value="@DateTime.Now.AddYears(1).ToShortDateString()" /> </td>
+                    </tr>
+                    <tr>
+                        <td>SERIAL/CHASIS NO.</td>
+                        <td>OFFICIAL RECEIPT</td>
+                        <td>COC NO.</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtSer" name="txtSer" type="text" placeholder="SERIAL/CHASIS NO." /></td>
+                        <td><input id="txtOR" name="txtOR" type="text" placeholder="OFFICIAL RECEIPT" /></td>
+                        <td><input id="txtCoc" name="txtCoc" type="text" placeholder="COC NO." /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>POLICY NO.</td>
+                        <td>COLOR</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td></td>
+                        <td><input id="txtPol" name="txtPol" type="text" placeholder="POLICY NO." /></td>
+                        <td><input id="txtColor" name="txtColor" type="text" placeholder="COLOR" /></td>
+                    </tr>
+                    <tr>
+                        <td>PLACE </td>
+                        <td>OTHERS</td>
+                        <td>DATE</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtPlace" name="txtPlace" type="text" placeholder="PLACE OF ISSUE" /></td>
+                        <td><input id="txtOth" name="txtOth" type="text" placeholder="OTHERS" /></td>
+                        <td><input id="txtDay" name="txtDay" type="text" placeholder="DAY" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>DOCS. STAMP</td>
+                        <td>MONTHS</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td></td>
+                        <td><input id="txtDoc" name="txtDoc" type="text" placeholder="DOCS STAMP" /></td>
+                        <td><input id="txtMonth" name="txtMonth" type="text" placeholder="MONTH" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>LGT</td>
+                        <td>YEAR</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td></td>
+                        <td><input id="txtLgt" name="txtLgt" type="text" placeholder="LGT" /></td>
+                        <td><input id="txtYear" name="txtYear" type="text" placeholder="YEAR" /></td>
+                    </tr>
+                    <tr>
+                        <td>RECEIVED FROM</td>
+                        <td>PREMIUM SALES</td>
+                        <td>MISC</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtRec" name="txtRec" type="text" placeholder="RECEIVED FROM" /></td>
+                        <td><input id="txtPrem" name="txtPrem" type="text" placeholder="PREMIUM SALES" /></td>
+                        <td><input id="txtMisc" name="txtMisc" type="text" placeholder="MISC" /></td>
+                    </tr>
+                    <tr>
+                        <td>ADDRESS</td>
+                        <td>DOCS. STAMP</td>
+                        <td>TOTAL</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input id="txtAddress" name="txtAddress" type="text" placeholder="ADDRESS" /></td>
+                        <td><input id="txtDocs" name="txtDocs" type="text" placeholder="DOC STAMP" /></td>
+                        <td><input id="txtTotal" name="txtTotal" type="text" placeholder="TOTAL" /></td>
+                    </tr>
+                    <tr>
+                        <td>DATE</td>
+                        <td>LG TAX</td>
+                        <td>THE SUM OF PESOS</td>
+                    </tr>
+                    <tr class="content-row">
+                        <td><input type="text" name="datepicker1" id="datepicker1" value="@DateTime.Now.ToShortDateString()" /></td>
+                        <td><input id="txtLg" name="txtLg" type="text" placeholder="LG TAX" /></td>
+                        <td><input id="txtSum" name="txtSum" type="text" placeholder="THE SUM OF PESOS" /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
+
+
+<script>
+    $().ready(function () {
+        $("#btnEdit").hide();
+        $("#btnUpdate").hide();
+        $("#itmdesc").attr("disabled", "disabled");
+        $("#itmprice").attr("disabled", "disabled");
+
+        $("#btnSearch").click(function () {
+
+            $("#btnEdit").attr("disabled", "disabled");
+            var itemcode = $("#itmcde").val();
+
+            $.post("../Home/SearchItem", {
+                itemcode: itemcode
+            }, function (res) {
+                if (res[0].mess == 0) {
+                    $("#btnEdit").removeAttr("disabled");
+                    $("#btnEdit").show();//I0000000003
+                    $("#itmdesc").val(res[0].desc);
+                    $("#itmprice").val(res[0].price);
+                } else {
+                    alert('Invalid Item code');
+                }
+            });
+        });
+
+        $("#btnEdit").click(function () {
+            $("#btnEdit").hide();
+            $("#btnUpdate").show();
+            $("#itmcde").attr("disabled", true);
+            $("#itmdesc").removeAttr("disabled");
+            $("#itmprice").removeAttr("disabled");
+            alert($("#itmdesc").val());
+        });
+
+        $("#btnUpdate").click(function () {
+            alert('UPDATING..');
+            var itemdesc = $("#itmdesc").val();
+            var itemprice = $("#itmprice").val();
+            var itemcode = $("#itmcde").val();
+
+            $.post("../Home/UpdateItem", {
+                itemdesc: itemdesc,
+                itemprice: itemprice,
+                itemcode: itemcode
+            }, function (res) {
+                if (res[0].mess == 0) {
+                    alert("Successfully Updated");
+                    $("#btnUpdate").hide();
+                    $("#itmcde").removeAttr("disabled").val();
+                    $("#itmdesc").attr("disabled", true).val();
+                    $("#itmprice").attr("disabled", true).val();
+
+
+                } else
+                    alert("Ooooppppssss.. Something Wrong");
+            });
+        });
+
+    });
+
+</script>
+
+
+<script>
+    $("document").ready(function () {
+        $(".btnEdit").each(function () {
+            $(this).click(function () {
+
+                $("#mvNum").removeAttr("disabled");
+                $("#make").removeAttr("disabled");
+                $("#datepicker1").removeAttr("disabled");
+
+                $("#txtPlate").removeAttr("disabled");
+                $("#txtSeries").removeAttr("disabled");
+                $("#datepicker2").removeAttr("disabled");
+
+                $("#txtMotorNum").removeAttr("disabled");
+                $("#txtBody").removeAttr("disabled");
+                $("#datepicker3").removeAttr("disabled");
+
+                $("#txtSer").removeAttr("disabled");
+                $("#txtModelNo").removeAttr("disabled");
+                $("#txtColor").removeAttr("disabled");
+
+                $("#txtOR").removeAttr("disabled");
+                $("#txtOth").removeAttr("disabled");
+                $("#txtDay").removeAttr("disabled");
+
+                $("#txtCoc").removeAttr("disabled");
+                $("#txtDoc").removeAttr("disabled");
+                $("#txtMonth").removeAttr("disabled");
+
+                $("#txtPol").removeAttr("disabled");
+                $("#txtLgt").removeAttr("disabled");
+                $("#txtYear").removeAttr("disabled");
+
+                $("#txtRec").removeAttr("disabled");
+                $("#txtPrem").removeAttr("disabled");
+                $("#txtMisc").removeAttr("disabled");
+
+                $("#txtAddress").removeAttr("disabled");
+                $("#txtDocs").removeAttr("disabled");
+                $("#txtTotal").removeAttr("disabled");
+
+                $("#txtPlace").removeAttr("disabled");
+                $("#txtLg").removeAttr("disabled");
+                $("#txtSum").removeAttr("disabled");
+
+
+                var id = $(this).closest('.info').find('.transID').html();
+
+
+                $.post("../Home/UpdateItem", {
+
+                    transID: id
+                }, function (res) {
+                    if (res[0].mess != 1) {
+                        $("#transType").val(res[0].type);
+                        $("#mvNum").val(res[0].mvNum);
+                        $("#make").val(res[0].brand);
+                        $("#datepicker1").val(res[0].issued);
+
+                        $("#txtPlate").val(res[0].plate);
+                        $("#txtSeries").val(res[0].series);
+                        $("#datepicker2").val(res[0].dateFrom);
+
+                        $("#txtMotorNum").val(res[0].motorNum);
+                        $("#txtBody").val(res[0].body);
+                        $("#datepicker3").val(res[0].dateTo);
+
+                        $("#txtSer").val(res[0].srl);
+                        $("#txtModelNo").val(res[0].modelNum);
+                        $("#txtColor").val(res[0].color);
+
+                        $("#txtOR").val(res[0].off_Rcpt);
+                        $("#txtOth").val(res[0].othr);
+                        $("#txtDay").val(res[0].day);
+
+                        $("#txtCoc").val(res[0].cocNum);
+                        $("#txtDoc").val(res[0].docs1);
+                        $("#txtMonth").val(res[0].mnth);
+
+                        $("#txtPol").val(res[0].polcyNum);
+                        $("#txtLgt").val(res[0].lgt);
+                        $("#txtYear").val(res[0].year);
+
+                        $("#txtRec").val(res[0].receiveFrom);
+                        $("#txtPrem").val(res[0].premiumSales);
+                        $("#txtMisc").val(res[0].msc);
+
+                        $("#txtAddress").val(res[0].address);
+                        $("#txtDocs").val(res[0].docs2);
+                        $("#txtTotal").val(res[0].total);
+
+                        $("#txtPlace").val(res[0].place);
+                        $("#txtLg").val(res[0].lg);
+                        $("#txtSum").val(res[0].sum);
+
+
+                    }
+
+                });
+            });
+        });
+
+    });
+
+</script>

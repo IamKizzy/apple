@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+
+    body {
+        background-color: darkgray;
+    }
+
+    .row {
+        color: aquamarine;
+        font-family: 'Times New Roman';
+    }
+
+    .col-md-4 {
+        text-align: center;
+    }
+</style>
+
+<div class="jumbotron">
+
+    <img src="~/Models/Images/stronghold.gif" />
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2><mark>Getting to our Company</mark></h2>
+        <br />
+        <p>
+
+        </p>
+        <button><i class="btn btn-default">@Html.ActionLink("About Us ->", "About", "Home")</i></button>
+
+    </div>
+    <div class="col-md-4">
+        <h2><mark>Reaching Us</mark></h2>
+        <br />
+        <p>
+
+        </p>
+        <button><i class="btn btn-default">@Html.ActionLink("Contact Us ->", "Contact", "Home")</i></button>
+    </div>
+</div>
